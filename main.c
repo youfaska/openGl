@@ -10,9 +10,6 @@
  
 GLint WindowWidth = WINDOW_WIDTH;
 GLint WindowHeight = WINDOW_HEIGHT;
-
-//info para la circunferencia
-float px=2 , py=5, radio=50, calx, caly; 
  
 void init_gl(int argc, char * argv[]) {
   glutInit(&argc, argv);
@@ -46,20 +43,8 @@ void display_func() {
   draw_hoop(0, 0, radius);
   draw_marks(0, 0, radius);
   draw_hands(0, 0, radius, timeinfo->tm_hour, timeinfo->tm_min);
-  
-	//Dibujar una circunferencia
-	glColor3f(1.0,0.0,1.0); // rojo verde azul
-	glBegin(GL_POINTS);
-	double i = 0.0;
-	for ( i = 0.0; i < 10 ; i+=0.001  ){
-		calx = radio * cos(i);
-		caly = radio * sin(i);
-		glVertex2f(calx,caly);
-	}
-	glEnd();	
-  	glFlush();
+  glFlush();
 }
-
  
 int main(int argc, char * argv[]) {
   init_gl(argc, argv);
