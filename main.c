@@ -43,7 +43,7 @@ void display_func() {
   time ( &rawtime );
   timeinfo = localtime (&rawtime);
   // Draw the clock
-  draw_hoop(0, 0, RADIO_CIRCUNFERENCIA); //he cambiado radius por un valor fijo asi no se ajusta al tamaño de la pantall
+  draw_hoop(0, 0, RADIO_CIRCUNFERENCIA); //he cambiado radius por un valor fijo asi no se ajusta al tamaño de la pantalla
   draw_marks(0, 0, RADIO_CIRCUNFERENCIA);
   draw_hands(0, 0, RADIO_CIRCUNFERENCIA, timeinfo->tm_hour, timeinfo->tm_min);
   glFlush();
