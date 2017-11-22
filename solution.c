@@ -36,9 +36,10 @@ void draw_hands(GLuint center_x, GLuint center_y, GLuint radius, GLuint hour, GL
  	glColor3f(0.0,0.0,0.0); // rojo, verde, azul
  	glLineWidth(2.0);
 	glBegin(GL_LINES);
-	int aumentarTamanio = 50;
+	int aumentarTamanio = 90;
 	glVertex2i(center_x,center_x);glVertex2i(minute+aumentarTamanio,center_y);
 	glEnd();
+	aumentarTamanio = aumentarTamanio + 30;
 	glLineWidth(1.0);
 	glBegin(GL_LINES);
 	glVertex2i(center_x,center_y);glVertex2i(center_x,hour+aumentarTamanio);
