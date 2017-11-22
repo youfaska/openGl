@@ -30,7 +30,7 @@ void draw_marks(GLuint center_x, GLuint center_y, GLuint radius) {
 	glVertex2i(center_x,separacionCircunferencia-radius);glVertex2i(center_x,-radius);
 	glVertex2i(-radius+separacionCircunferencia,center_y);glVertex2i(-radius,center_y);
 	glEnd();
-
+ //ggg
 }
 void draw_hands(GLuint center_x, GLuint center_y, GLuint radius, GLuint hour, GLuint minute) {
  	glColor3f(0.0,0.0,0.0); // rojo, verde, azul
