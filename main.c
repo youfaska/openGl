@@ -1,13 +1,9 @@
-#include <GL/GL.h>
-#include <GL/GLUT.h>
-#include <time.h>
 #include "solution.h"
-#include <math.h>
-#include <stdio.h>
- 
+#include "stdio.h"
+#include "conio.h"
+
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
-#define MARGIN_WIDTH 40
 
 GLint WindowWidth = WINDOW_WIDTH;
 GLint WindowHeight = WINDOW_HEIGHT;
@@ -47,11 +43,16 @@ void draw_cohen_sutherland() {
   glColor3f(0.0f, 0.3f, 1.0f);
   glRectf(wxmin, wymin, wxmax, wymax);
   // Draw line
-  Point p1={-280,100};
-  Point p2={-150,-100};
+  Point p1={-280,40};
+  Point p2={-150,-60};
   draw_line(&p1, &p2, 1.0f, 0.1f, 1.0f, 0.0f);
-  // Draw clipped line
+  //Draw clipped line
+ // printf("El valor del p1.x es : %f ", p1.x);
+  //printf("El valor del p1.y es : %f ", p1.y);
   int discarded = cohen_sutherland(&p1,&p2,wxmin,wymin,wxmax,wymax);
+  //printf("DESPUES DEL ALGORITMO....");
+  //printf("El valor del p1.x es : %f ", p1.x);
+  //printf("El valor del p1.y es : %f ", p1.y);
   if (!discarded) {
     draw_line(&p1, &p2, 5.0f, 1.0f, 0.1f, 0.0f);
   }
