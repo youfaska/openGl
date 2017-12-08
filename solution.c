@@ -50,7 +50,7 @@ void cut_p1_side(Point* p1, const Point* p2, GLfloat wxmin, GLfloat wymin, GLflo
  */
 int cohen_sutherland(Point* p1, Point* p2, GLfloat wxmin, GLfloat wymin, GLfloat wxmax, GLfloat wymax) {
 	if(LRBT( p1,  wxmin,  wymin,  wxmax,  wymax) & LRBT( p2,  wxmin,  wymin,  wxmax,  wymax)){
-		return (int) NULL;
+		return 0;
 	}
 	if((LRBT( p1,  wxmin,  wymin,  wxmax,  wymax) | LRBT( p2,  wxmin,  wymin,  wxmax,  wymax)) == 0){
 		return (p1,p2);
