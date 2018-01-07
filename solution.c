@@ -27,11 +27,11 @@ int LRBT(Point* p, GLfloat wxmin, GLfloat wymin, GLfloat wxmax, GLfloat wymax) {
 
 void cut_p1_side(Point* p1, const Point* p2, GLfloat wxmin, GLfloat wymin, GLfloat wxmax, GLfloat wymax) {
 	float m = ( p2->y - p1->y ) / ( p2->x - p1->x );
-	if (LRBT(p1,   wxmin,  wymin,  wxmax,  wymax) == 8){ // si esta la izquierda de mi vista
+	if (LRBT(p1,   wxmin,  wymin,  wxmax,  wymax) & 8){ // si esta la izquierda de mi vista
 		p1->y = p1->y + m*(wxmin-p1->x);
 		p1->x =  wxmin;
 	}
-	if (LRBT(p1,   wxmin,  wymin,  wxmax,  wymax) == 4){// si esta la derecha de mi vista
+	if (LRBT(p1,   wxmin,  wymin,  wxmax,  wymax) & 4){// si esta la derecha de mi vista
 		p1->y = p1->y + m*(wxmax-p1->x);
 		p1->x =  wxmax;
 	}
@@ -53,7 +53,7 @@ int cohen_sutherland(Point* p1, Point* p2, GLfloat wxmin, GLfloat wymin, GLfloat
 		return 0;
 	}
 	if((LRBT( p1,  wxmin,  wymin,  wxmax,  wymax) | LRBT( p2,  wxmin,  wymin,  wxmax,  wymax)) == 0){
-		return (p1,p2);
+		return 0;
 	}
 	if(LRBT( p1,  wxmin,  wymin,  wxmax,  wymax)  == 0){
 		return cohen_sutherland( p2,p1,  wxmin,  wymin,  wxmax,  wymax);
@@ -62,10 +62,41 @@ int cohen_sutherland(Point* p1, Point* p2, GLfloat wxmin, GLfloat wymin, GLfloat
   return cohen_sutherland( p1,p2,  wxmin,  wymin,  wxmax,  wymax); 
 }
 
+int allIn(Point* polygon,int* p_n_vertices, GLfloat wxmin, GLfloat wymin, GLfloat wxmax, GLfloat wymax){
+	int result = 100; //valor diferente a 0;
+	int i = 0, k = 0;
+	for (i =0; i<p_n_vertices[0]; i++){ //pasar por los vertices
+		if(LRBT(&polygon[i], wxmin,  wymin,  wxmax,  wymax) !=0){
+			return 0;
+		}
+	}
+	return result;
+}
+
+int allOut(Point* polygon,int* p_n_vertices, GLfloat wxmin, GLfloat wymin, GLfloat wxmax, GLfloat wymax){
+	int result = 100; //valor diferente a 0;
+	int i = 0, k = 0;
+	for (i =0; i<p_n_vertices; i++){ //pasar por los vertices
+		if(LRBT(&polygon[i], wxmin,  wymin,  wxmax,  wymax) ==0){
+			return 0;
+		}
+	}
+	return result;
+}
+
 /*
  * Returns a boolean indicating if the line is completely discarded, or not
  */
 int sutherland_hodgman(Point* polygon,int* p_n_vertices, GLfloat wxmin, GLfloat wymin, GLfloat wxmax, GLfloat wymax) {
+/*	
+	if (allIn( polygon,p_n_vertices,  wxmin,  wymin,  wxmax,  wymax)){
+		
+	}else if(allOut( polygon,p_n_vertices,  wxmin,  wymin,  wxmax,  wymax)){
+		
+	}*//*else{
+		
+	}*/
+	
   return 0;
 }
 

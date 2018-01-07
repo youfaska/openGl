@@ -44,15 +44,12 @@ void draw_cohen_sutherland() {
   glRectf(wxmin, wymin, wxmax, wymax);
   // Draw line
   Point p1={-280,40};
-  Point p2={-150,-60};
+  Point p2={-150,-90};
   draw_line(&p1, &p2, 1.0f, 0.1f, 1.0f, 0.0f);
   //Draw clipped line
- // printf("El valor del p1.x es : %f ", p1.x);
-  //printf("El valor del p1.y es : %f ", p1.y);
+
   int discarded = cohen_sutherland(&p1,&p2,wxmin,wymin,wxmax,wymax);
-  //printf("DESPUES DEL ALGORITMO....");
-  //printf("El valor del p1.x es : %f ", p1.x);
-  //printf("El valor del p1.y es : %f ", p1.y);
+//discarded=0;
   if (!discarded) {
     draw_line(&p1, &p2, 5.0f, 1.0f, 0.1f, 0.0f);
   }
